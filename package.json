@@ -8,8 +8,9 @@
     "test": "tests"
   },
   "dependencies": {
-    "restore": "^0.3.0",
-    "nodeunit": "0.11.2"
+    "express": "^4.16.3",
+    "nodeunit": "0.11.2",
+    "restore": "^0.3.0"
   },
   "devDependencies": {},
   "scripts": {
