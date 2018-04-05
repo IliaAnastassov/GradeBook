@@ -1,11 +1,23 @@
 let gradeBook = require("./lib/grades").gradeBook;
+let express = require("express");
+let app = express();
 
-if (process.argv.length > 2) {
-    for (let i = 2; i < process.argv.length; i++) {
-        gradeBook.addGrade(parseInt(process.argv[i]));
-    }
+app.get("/", function (req, res) {
+    res.send("Hello!");
+});
 
-    console.log(gradeBook.getAverage(), gradeBook.getLetterGrade());
-} else {
-    console.log("Please provide some grades. Ex: [grade1] [grade2] [grade3]")
-}
+app.get("/grade", function (req, res) {
+    let grades = req.query.grades.split(",");
+    grades.forEach(grade => {
+        gradeBook.addGrade(parseInt(grade));
+    });
+
+    let average = gradeBook.getAverage();
+    let letterGrade = gradeBook.getLetterGrade();
+    res.send("Average score: " + average + "\n" + "Grade: " + letterGrade);
+
+    gradeBook.reset();
+});
+
+app.listen(3000);
+console.log("Server ready...");
