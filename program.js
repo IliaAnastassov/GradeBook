@@ -1,4 +1,4 @@
-let gradeBook = require("./grades").gradeBook;
+let gradeBook = require("./lib/grades").gradeBook;
 
 gradeBook.addGrade(72)
 gradeBook.addGrade(85)
