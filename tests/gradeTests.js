@@ -72,4 +72,3 @@ exports["Can compute letter grade of F"] = function (test) {
     test.equal(mark, "F");
     test.done();
 };
-
